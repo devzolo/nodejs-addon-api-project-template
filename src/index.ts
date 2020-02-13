@@ -1,2 +1,2 @@
-const example = require(`../bin/${process.platform}/${process.arch}/example`);
-export default example;
+const addon = require(`../bin/${process.platform}/${process.arch}/example`); //require('bindings')('example');
+export default addon;

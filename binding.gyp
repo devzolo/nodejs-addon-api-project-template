@@ -12,12 +12,16 @@
   'targets': [
     {
       'target_name': 'example',
+      "cflags!": [ "-fno-exceptions" ],
+      "cflags_cc!": [ "-fno-exceptions" ],
       'sources': [
-        'src/example.c'
+        'src/example.cc'
       ],
-      'defines' : ['UNICODE'],
+      'defines' : ['NAPI_DISABLE_CPP_EXCEPTIONS','UNICODE'],
       'libraries': [],
-      'include_dirs' : [],
+      "include_dirs": [
+        "<!@(node -p \"require('node-addon-api').include\")"
+      ],
       'library_dirs' : [],
     },
     {
