@@ -21,14 +21,23 @@
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
+  "binary": {
+    "module_name": "nodejs-napi-project-template",
+    "module_path": "./bin/{platform}/{arch}/",
+    "remote_path": "./releases/download/v{version}/",
+    "package_name": "{module_name}-v{version}-{platform}-{arch}.tar.gz",
+    "host": "https://github.com/devzolo/nodejs-napi-project-template"
+  },
   "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build",
     "dev": "nodemon",
+    "sources": "deps-source",
     "start": "ts-node src",
-    "build": "tsc",
+    "build": "tsc&&node-pre-gyp install --build-from-source",
     "test": "jest --coverage"
   },
   "dependencies": {
-    "bindings": "^1.5.0",
-    "node-addon-api": "^2.0.0"
+    "node-addon-api": "^2.0.0",
+    "node-pre-gyp": "^0.14.0"
   }
 }
